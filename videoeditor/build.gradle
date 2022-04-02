@@ -1,0 +1,112 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'maven-publish'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
+
+def getGroupId = { ->
+    return "com.adc" // Replace with version Name
+//    return "com.testing" // Testing
+}
+
+def getArtificatId = { ->
+    return "videoeditor" // Replace with library name ID
+}
+
+def getVersionName = { ->
+    return "1.0.0-SNAPSHOT" // Replace with library name ID
+}
+
+//publishing {
+//    publications {
+//        bar(MavenPublication) {
+//            groupId getGroupId()
+//            artifactId getArtificatId()
+//            version getVersionName()
+//            artifact("$buildDir/outputs/aar/${getArtificatId()}-release.aar")
+//            //generate .pom file with transitive dependencies
+//            pom.withXml {
+//                final dependenciesNode = asNode().appendNode('dependencies')
+//                ext.addDependency = { Dependency dep, String scope ->
+//                    if (dep.group == null || dep.version == null || dep.name == null || dep.name == "unspecified")
+//                        return
+//                    final dependencyNode = dependenciesNode.appendNode('dependency')
+//                    dependencyNode.appendNode('groupId', dep.group)
+//                    dependencyNode.appendNode('artifactId', dep.name)
+//                    dependencyNode.appendNode('version', dep.version)
+//                    dependencyNode.appendNode('scope', scope)
+//                    if (!dep.transitive) {
+//                        final exclusionNode = dependencyNode.appendNode('exclusions').appendNode('exclusion')
+//                        exclusionNode.appendNode('groupId', '*')
+//                        exclusionNode.appendNode('artifactId', '*')
+//                    } else if (!dep.properties.excludeRules.empty) {
+//                        final exclusionNode = dependencyNode.appendNode('exclusions').appendNode('exclusion')
+//                        dep.properties.excludeRules.each { ExcludeRule rule ->
+//                            exclusionNode.appendNode('groupId', rule.group ?: '*')
+//                            exclusionNode.appendNode('artifactId', rule.module ?: '*')
+//                        }
+//                    }
+//                }
+////                configurations.compile.getDependencies().each { dep -> addDependency(dep, "compile") }
+//                configurations.api.getDependencies().each { dep -> addDependency(dep, "compile") }
+//                configurations.implementation.getDependencies().each { dep -> addDependency(dep, "runtime") }
+//            }
+//        }
+//    }
+//
+//    repositories {
+//        maven {
+//            url = uri("https://gitlab.com/api/v4/projects/30119172/packages/maven") // CTM
+////            url = uri("https://gitlab.com/api/v4/projects/30045447/packages/maven") // Testing
+//            // Just now for testing - After that push to customer git
+//            name "GitLab"
+//            credentials(HttpHeaderCredentials) {
+//                name = "Private-Token"
+//                value = "xM3m2fr-ke2jzCF65CpM" // CTM
+////                value = "ZamPjEkZP9nEyzS-Pzz3" // Testing
+//            }
+//            authentication {
+//                header(HttpHeaderAuthentication)
+//            }
+//        }
+//    }
+//}
