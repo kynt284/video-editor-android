@@ -56,6 +56,19 @@ def getVersionName = { ->
     return "1.0.0-SNAPSHOT" // Replace with library name ID
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github'
+                artifactId = 'kynt284'
+                version = '0.0.4'
+            }
+        }
+    }
+}
+
 //publishing {
 //    publications {
 //        bar(MavenPublication) {
