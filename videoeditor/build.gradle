@@ -61,8 +61,8 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.github'
-                artifactId = 'kynt284'
+                groupId = 'com.github.kynt284'
+                artifactId = 'video-editor-android'
                 version = '0.0.4'
             }
         }
