@@ -64,7 +64,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.kynt284'
                 artifactId = 'video-editor-android'
-                version = '0.0.4'
+                version = '0.0.5'
             }
         }
     }
