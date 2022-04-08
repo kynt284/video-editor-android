@@ -6,12 +6,11 @@ plugins {
 }
 
 android {
-    compileSdk 30
-    buildToolsVersion "30.0.3"
+    compileSdk 31
 
     defaultConfig {
         minSdk 24
-        targetSdk 30
+        targetSdk 31
         versionCode 1
         versionName "1.0"
 
@@ -45,16 +44,15 @@ dependencies {
 }
 
 def getGroupId = { ->
-    return "com.adc" // Replace with version Name
-//    return "com.testing" // Testing
+    return "com.github.kynt284" // Replace with version Name
 }
 
-def getArtificatId = { ->
-    return "videoeditor" // Replace with library name ID
+def getArtifactId = { ->
+    return "video-editor-android" // Replace with library name ID
 }
 
 def getVersionName = { ->
-    return "1.0.0-SNAPSHOT" // Replace with library name ID
+    return "0.0.6" // Replace with library name ID
 }
 
 afterEvaluate {
@@ -62,9 +60,10 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.github.kynt284'
-                artifactId = 'video-editor-android'
-                version = '0.0.5'
+                groupId = getGroupId
+                artifactId = getArtifactId
+                version = getVersionName
+                artifact  ("$buildDir/outputs/aar/${getArtifactId()}-release.aar")
             }
         }
     }
